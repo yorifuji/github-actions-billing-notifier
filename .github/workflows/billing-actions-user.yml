@@ -36,5 +36,5 @@ jobs:
         with:
           payload: |
             {
-              "text": "今月は $total_minutes_used 分のアクションを実行しました。有料プランで利用した分は $total_paid_minutes_used 分です。無料プランで利用できる分は $included_minutes 分です。"
+              "text": "今月は ${{ steps.billing-result.outputs.total_minutes_used }} 分のアクションを実行しました。有料プランで利用した分は ${{ steps.billing-result.outputs.total_paid_minutes_used }} 分です。無料プランで利用できる分は ${{ steps.billing-result.outputs.included_minutes }} 分です。"
             }
