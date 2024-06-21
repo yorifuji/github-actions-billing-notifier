@@ -1,0 +1,24 @@
+name: get billing actions for user
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+jobs:
+  get-billing-actions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: billing
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          sh get_billing_actions_for_user.sh
+
+      - run: |
+          echo "${{ steps.billing.outputs.total_minutes_used }}"
+          echo "${{ steps.billing.outputs.total_paid_minutes_used }}"
+          echo "${{ steps.billing.outputs.included_minutes }}"
