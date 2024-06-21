@@ -40,11 +40,11 @@ jobs:
                 {
                   "type": "header",
                   "text": {
-                    "type": "mrkdwn",
-                    "text": "*GitHub Action 利用状況*"
+                    "type": "plain_text",
+                    "text": "GitHub Actions の利用状況",
                   }
-                },                
-                {
+                },
+                { 
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
