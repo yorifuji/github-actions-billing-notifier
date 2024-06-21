@@ -1,6 +1,7 @@
 name: get billing actions for user
 
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * *" # 9:00 JST
