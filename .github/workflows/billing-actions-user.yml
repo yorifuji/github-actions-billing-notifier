@@ -38,6 +38,13 @@ jobs:
             {
               "blocks": [
                 {
+                  "type": "header",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*GitHub Action 利用状況*"
+                  }
+                },                
+                {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
