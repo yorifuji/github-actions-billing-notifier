@@ -1,0 +1,55 @@
+name: Get billing actions for organization
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # 9:00 JST
+
+jobs:
+  billing-actions-org:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get billing actions for organization
+        id: billing-result
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          sh get_billing_actions_for_org.sh
+
+      - name: Dump outputs
+        run: |
+          echo "${{ steps.billing-result.outputs.total_minutes_used }}"
+          echo "${{ steps.billing-result.outputs.total_paid_minutes_used }}"
+          echo "${{ steps.billing-result.outputs.included_minutes }}"
+
+      - name: Send Slack message
+        uses: slackapi/slack-github-action@v1
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "GitHub Actions の利用状況"
+                  }
+                },
+                { 
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "契約しているプランでは `${{ steps.billing-result.outputs.included_minutes }}` 分まで利用できます。今月は `${{ steps.billing-result.outputs.total_minutes_used }}` 分のアクションを実行しました。課金された利用時間は `${{ steps.billing-result.outputs.total_paid_minutes_used }}` 分です。"
+                  }
+                }
+              ]
+            }
