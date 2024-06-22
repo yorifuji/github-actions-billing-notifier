@@ -1,4 +1,4 @@
-name: get billing actions for user
+name: Get billing actions for user
 
 on:
   push:
