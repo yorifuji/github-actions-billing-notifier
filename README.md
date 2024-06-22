@@ -6,8 +6,10 @@
 
 - Fork this repository
 - Create fine granted token
-  - Read access to plan in User permissions for user
-  - Read access to organization administration in Organization permissions for organization
-  - https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token
-- Add token in secrets 
-  - <img width="777" alt="image" src="https://github.com/yorifuji/billing-actions-monitor/assets/583917/2fea80a6-8bf1-4e7c-be68-7e06a0f5579a">
+  - **Read access to plan in User permissions** for user
+    - https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token
+  - **Read access to organization administration in Organization permissions** for organization
+- Add token in secrets
+  - `GH_TOKEN_USER` for user, `GH_TOKEN_ORG` for organization
+  - `SLACK_WEBHOOK_URL` for slack webhook url
+  - <img width="785" alt="image" src="https://github.com/yorifuji/billing-actions-monitor/assets/583917/49a2a30c-fce3-419f-86cb-234724a3bef4">
