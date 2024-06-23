@@ -18,8 +18,9 @@ jobs:
       - name: Get billing actions for user
         id: billing-result
         env:
+          ACCOUNT_NAME: ${{ vars.ACCOUNT_NAME_USER }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN_USER }}
-        run: sh get_billing_actions_for_user.sh
+        run: sh get_billing_actions_for_user.sh "$ACCOUNT_NAME"
 
       - name: Send Slack message
         uses: slackapi/slack-github-action@v1

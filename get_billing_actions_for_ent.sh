@@ -5,7 +5,7 @@ set -eu
 RESPONSE=$(gh api \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  "/users/$1/settings/billing/actions")
+  "/enterprises/$1/settings/billing/actions")
 
 # echo $RESPONSE | jq
 

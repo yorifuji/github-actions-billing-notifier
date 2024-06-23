@@ -1,4 +1,4 @@
-name: Get billing actions for organization
+name: Get billing actions for enterprise
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     - cron: "0 0 * * *" # 9:00 JST
 
 jobs:
-  billing-actions-org:
+  billing-actions-ent:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -15,12 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get billing actions for organization
+      - name: Get billing actions for enterprise
         id: billing-result
         env:
-          ACCOUNT_NAME: ${{ vars.ACCOUNT_NAME_ORG }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN_ORG }}
-        run: sh get_billing_actions_for_org.sh "$ACCOUNT_NAME"
+          ACCOUNT_NAME: ${{ vars.ACCOUNT_NAME_ENT }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN_ENT }}
+        run: sh get_billing_actions_for_ent.sh "$ACCOUNT"
 
       - name: Send Slack message
         uses: slackapi/slack-github-action@v1

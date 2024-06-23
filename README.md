@@ -13,10 +13,13 @@ GitHub Actions to notify actions usage to Slack.
     - https://docs.github.com/en/rest/billing/billing?apiVersion=2022-11-28#get-github-actions-billing-for-a-user
   - **Read access to organization administration in Organization permissions** for organization
     - https://docs.github.com/en/rest/billing/billing?apiVersion=2022-11-28#get-github-actions-billing-for-an-organization
+  - **"Enterprise administration" business permissions (write)** for enterprise
+    - https://docs.github.com/en/enterprise-cloud@latest/rest/enterprise-admin/billing?apiVersion=2022-11-28#get-github-actions-billing-for-an-enterprise
 - Create slack incomming webhook url
 - Add in secrets
   - `GH_TOKEN_USER` for user
   - `GH_TOKEN_ORG` for organization
+  - `GH_TOKEN_ENT` for enterprise
   - `SLACK_WEBHOOK_URL` for slack webhook url
   - <img width="785" alt="image" src="https://github.com/yorifuji/billing-actions-monitor/assets/583917/49a2a30c-fce3-419f-86cb-234724a3bef4">
 - Click Actions tab, enable workflows
