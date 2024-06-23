@@ -1,4 +1,4 @@
-# billing-actions-notifier
+# github-actions-billing-notifier
 
 GitHub Actions to notify actions usage to Slack.
 
