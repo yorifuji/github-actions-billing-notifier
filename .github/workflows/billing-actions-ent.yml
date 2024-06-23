@@ -20,7 +20,7 @@ jobs:
         env:
           ACCOUNT_NAME: ${{ vars.ACCOUNT_NAME_ENT }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN_ENT }}
-        run: sh get_billing_actions_for_ent.sh "$ACCOUNT"
+        run: sh ./script/get_billing_actions_for_ent.sh "$ACCOUNT"
 
       - name: Send Slack message
         uses: slackapi/slack-github-action@v1
