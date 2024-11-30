@@ -23,7 +23,7 @@ jobs:
         run: sh ./script/get_billing_actions_for_ent.sh "$ACCOUNT_NAME"
 
       - name: Send Slack message
-        uses: slackapi/slack-github-action@v1
+        uses: slackapi/slack-github-action@v2
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
